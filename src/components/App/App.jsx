@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ThreeDots } from "react-loader-spinner";
 
 import { getImages } from "../../image-api";
 import ImageGallery from "../ImageGallery/ImageGallery";
@@ -8,6 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import { ToastContainer, toast } from "react-toastify";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Loader from "../Loader/Loader";
 
 import css from "./App.module.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -84,20 +84,7 @@ export default function App() {
         {images.length > 0 && isLastPage && (
           <p className={css.lastInfo}>Sorry, no more images...</p>
         )}
-        {isLoading && (
-          <span>
-            <ThreeDots
-              visible={true}
-              height="80"
-              width="80"
-              color="#0081f1"
-              radius="9"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          </span>
-        )}
+        {isLoading && <Loader />}
       </div>
       <ImageModal
         openModal={modalIsOpen}
