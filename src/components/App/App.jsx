@@ -7,6 +7,7 @@ import ImageModal from "../ImageModal/ImageModal";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import { ToastContainer, toast } from "react-toastify";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import css from "./App.module.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -72,7 +73,7 @@ export default function App() {
         <SearchBar onSearch={handleSearch} notify={notify} />
       </header>
       <div className={css.galleryContainer}>
-        {isError && <p>Something went wrong. Try again...</p>}
+        {isError && <ErrorMessage />}
         {images.length > 0 && (
           <ImageGallery items={images} openModal={openModal} />
         )}
